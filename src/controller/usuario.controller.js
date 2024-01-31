@@ -68,7 +68,7 @@ const removeUserAddressController = async (req,res) =>{
     }
 };
 
-const addUserFavProduct = async (req,res) =>{
+const addUserFavProductController = async (req,res) =>{
     try{
         
 
@@ -78,7 +78,7 @@ const addUserFavProduct = async (req,res) =>{
     }
 };
 
-const removerUserFavProduct = async (req,res) =>{
+const removerUserFavProductController = async (req,res) =>{
     try{
         
 
@@ -86,7 +86,8 @@ const removerUserFavProduct = async (req,res) =>{
         console.log(`erro: ${err.message}`);
         return res.status(500).send("erro no servidor, tente novamente mais tarde");
     }
-}
+};
+
 module.exports = {
     findUserByIdcontroller,
     findAllUsercontroller,
@@ -95,6 +96,6 @@ module.exports = {
     removeUserController,
     addUserAddressController,
     removeUserAddressController,
-    addUserFavProduct,
-    removerUserFavProduct,
+    addUserFavProductController,
+    removerUserFavProductController,
 }
