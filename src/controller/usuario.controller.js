@@ -2,7 +2,7 @@ const userService = require("../service/usurio.service");
 
 const findUserByIdcontroller = async (req,res) => {
     try{
-        const user = userService.findAllUsersService(req.params.id);
+        const user = await userService.findAllUsersService(req.params.id);
 
         if(!user){
             return res.status(404).send ({message: "Usuario nao encontrado, tente novamente"});
@@ -12,11 +12,10 @@ const findUserByIdcontroller = async (req,res) => {
 
     }catch(err){
         if(err.kind == "ObjectId"){
-            console.log(err.kind == "object");
             return res.status(400).send({ message: `ID informado, estar incorreto, tente novamente!`})
         }
         console.log(`erro: ${err.message}`);
-        return res.status(500).send("erro no servidor, tente novamente mais tarde");
+        return res.status(500).send({ menssage:"Erro inasperado tente novamente!"});
     }
     
 };
