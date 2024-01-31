@@ -16,7 +16,7 @@ const updateUserService = (id, body) => {
     return Usuario.findByIdAndUpdate(id, body, {returnDocumente: "after"}); //para não retorna o mesmo documente do banco
 }
 
-const removerUserService = (id) => {
+const removeUserService = (id) => {
     return Usuario.findByIdAndRemove(id);
 }
 
@@ -41,7 +41,7 @@ module.exports = {
     findAllUsersService,
     createUsersService,
     updateUserService,
-    removerUserService,
+    removeUserService,
     addUserAddressService,
     removerUserAddressService,
     addUserFavProductService,
