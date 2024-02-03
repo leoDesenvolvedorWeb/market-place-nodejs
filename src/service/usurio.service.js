@@ -36,7 +36,7 @@ const addUserAddressService = (id, endereco) => {
     );
 }
 
-const removerUserAddressService = (id, addressId) => {
+const removeUserAddressService = (id, addressId) => {
     return Usuario.findOneAndUpdate(
         {
             _id: id,
@@ -69,7 +69,7 @@ module.exports = {
     updateUserService,
     removeUserService,
     addUserAddressService,
-    removerUserAddressService,
+    removeUserAddressService,
     addUserFavProductService,
     removerUserFavProductService,
 }

@@ -98,9 +98,9 @@ const addUserAddressController = async (req,res) =>{
     }
 };
 
-const removeUserAddressController = async (req,res) =>{
+const removeUserAddressController = async (req, res) => {
     try{
-        const endereco = await userService.removerUserAddressService(req.body.id, req.body.addressId);
+        const endereco = await userService.removeUserAddressService(req.body.id, req.body.addressId);
 
         if(endereco.ok == 1){
             res.status(200).send({ message: `Endereco removido com sucesso!`});
