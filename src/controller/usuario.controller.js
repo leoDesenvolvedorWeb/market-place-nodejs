@@ -68,14 +68,12 @@ const removeUserController = async (req, res) => {
         const deletedUser = await userService.removeUserService(req.params.id);
 
         console.log(deletedUser);
-        res.status(200).send({ message: `Sucesso, usuario deletado!`});
-        
 
-        // if(deletedUser == null){
-        //     res.status(404).send({ message: `Usuario nao encontrado, tente novamente!`});
-        // }else{
-        //     res.status(200).send({ message: `Sucesso, usuario deletado!`});
-        // }
+        if(deletedUser == null){
+            res.status(404).send({ message: `Usuario nao encontrado, tente novamente!`});
+        }else{
+            res.status(200).send({ message: `Sucesso, usuario deletado!`});
+        }
 
     }catch(err){
         console.log(`erro: ${err.message}`);
@@ -89,7 +87,7 @@ const addUserAddressController = async (req,res) =>{
         const endereco = await userService.addUserAddressService(req.params.id, req.body);
 
         if(endereco.ok == 1){
-            res.status(200).send({ message: `Endereco adicionado com sucesso!`});
+            res.status(201).send({ message: `Endereco adicionado com sucesso!`});
         }else{
             res.status(400).send({ message: `Algo deu errado no endereço, tente novamente!`});
         }
@@ -105,9 +103,9 @@ const removeUserAddressController = async (req,res) =>{
         const endereco = await userService.removerUserAddressService(req.body.id, req.body.addressId);
 
         if(endereco.ok == 1){
-            res.status(200).send({ menssage: `Endereco removido com sucesso!`});
+            res.status(200).send({ message: `Endereco removido com sucesso!`});
         }else{
-            res.status(400).send({ menssage: `Algo deu errado no endereço, não foi removido, tente novamente!`});
+            res.status(400).send({ message: `Algo deu errado no endereço, não foi removido, tente novamente!`});
         }
 
     }catch(err){
