@@ -2,7 +2,7 @@ const userService = require("../service/usurio.service");
 
 const findUserByIdcontroller = async (req,res) => {
     try{
-        const user = await userService.findAllUsersService(req.params.id);
+        const user = await userService.findUserByIdService(req.params.id);
 
         if(!user){
             return res.status(404).send ({message: "Usuario nao encontrado, tente novamente"});
@@ -58,7 +58,7 @@ const updateUserController = async (req, res) =>{
 
     }catch(err){
         console.log(`erro: ${err.message}`);
-        return res.status(500).send("erro no servidor, tente novamente mais tarde");
+        return res.status(500).send({ message: `Erro no servidor, tente novamente mais tarde`});
     }
 };
 
@@ -68,12 +68,14 @@ const removeUserController = async (req, res) => {
         const deletedUser = await userService.removeUserService(req.params.id);
 
         console.log(deletedUser);
+        res.status(200).send({ message: `Sucesso, usuario deletado!`});
+        
 
-        if(deletedUser == null){
-            res.status(404).send({ message: `Usuario nao encontrado, tente novamente!`});
-        }else{
-            res.status(200).send({ message: `Sucesso, usuario deletado!`});
-        }
+        // if(deletedUser == null){
+        //     res.status(404).send({ message: `Usuario nao encontrado, tente novamente!`});
+        // }else{
+        //     res.status(200).send({ message: `Sucesso, usuario deletado!`});
+        // }
 
     }catch(err){
         console.log(`erro: ${err.message}`);
@@ -124,7 +126,7 @@ const addUserFavProductController = async (req,res) =>{
     }
 };
 
-const removerUserFavProductController = async (req,res) =>{
+const removeUserFavProductController = async (req,res) =>{
     try{
         
 
@@ -143,5 +145,5 @@ module.exports = {
     addUserAddressController,
     removeUserAddressController,
     addUserFavProductController,
-    removerUserFavProductController,
+    removeUserFavProductController,
 }
