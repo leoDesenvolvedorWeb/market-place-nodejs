@@ -1,4 +1,4 @@
-const userService = require("../service/usurio.service");
+const userService = require("../service/usuario.service");
 
 const findUserByIdcontroller = async (req,res) => {
     try{
