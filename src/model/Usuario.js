@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UsuarioSchema = new mongoose.Schema({
+const UsuarioSchema = mongoose.Schema({
     nome: { type: String, required: true },
     email: { type: String, unique: true, required: true },
     senha: { type: String, required: true },
@@ -8,7 +8,7 @@ const UsuarioSchema = new mongoose.Schema({
     enderecos: [
         {
             rua: { type: String, required: true},
-            numero: { type: Number, required: true},
+            nomero: { type: Number, required: true},
             complemento: { type: String, required: false},
             CEP: { type: String, required: true},
             createdAt: { type: Date, required: true, default: Date.now()},

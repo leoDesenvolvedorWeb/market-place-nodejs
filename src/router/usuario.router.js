@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const usuarioController = require("../controller/usuario.controller");
+const usuarioController = require("../controller/usuario.controller")
 
 //rotas get
-router.get('/findById/:id', usuarioController.findUserByIdcontroller);
+router.get('/findById/:id', usuarioController.findAllUsercontroller);
 router.get('/findAll', usuarioController.findAllUsercontroller);
 
 //rotas post
@@ -15,8 +15,8 @@ router.post('/addFavProduct/:id', usuarioController.addUserFavProductController)
 router.put('/update/:id', usuarioController.updateUserController);
 
 //rotas delete
-router.delete('/remove/:id', usuarioController.removeUserController);
-router.delete('/removeAddress', usuarioController.removeUserAddressController);
-router.delete('/removeFavProduct', usuarioController.removeUserFavProductController);
+router.delete('/delete/:id', usuarioController.deleteUserController);
+router.delete('/deleteAddress', usuarioController.deleteUserAddressController);
+router.delete('/deleteFavProduct', usuarioController.deleteUserFavProductController);
 
 module.exports = router;

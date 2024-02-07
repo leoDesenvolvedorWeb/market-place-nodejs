@@ -2,7 +2,7 @@ const userService = require("../service/usuario.service");
 
 const findUserByIdcontroller = async (req,res) => {
     try{
-        const user = await userService.findUserByIdService(req.params.id);
+        const user = await userService.findAllUsersService(req.params.id);
 
         if(!user){
             return res.status(404).send ({message: "Usuario nao encontrado, tente novamente"});
@@ -58,22 +58,23 @@ const updateUserController = async (req, res) =>{
 
     }catch(err){
         console.log(`erro: ${err.message}`);
-        return res.status(500).send({ message: `Erro no servidor, tente novamente mais tarde`});
+        return res.status(500).send("erro no servidor, tente novamente mais tarde");
     }
 };
 
-const removeUserController = async (req, res) => {
+const deleteUserController = async (req, res) => {
     try{
 
-        const deletedUser = await userService.removeUserService(req.params.id);
+        const deletedUser = await userService.deleteUserService(req.params.id);
 
         console.log(deletedUser);
+        res.status(200).send({ message: `Sucesso, usuario deletado!`});
 
-        if(deletedUser == null){
-            res.status(404).send({ message: `Usuario nao encontrado, tente novamente!`});
-        }else{
-            res.status(200).send({ message: `Sucesso, usuario deletado!`});
-        }
+    //     if(deletedUser == null){
+    //         res.status(404).send({ menssage: `Usuario nao encontrado, tente novamente!`});
+    //     }else{
+    //          res.status(200).send({ message: `Sucesso, usuario deletado!`});
+    //     }
 
     }catch(err){
         console.log(`erro: ${err.message}`);
@@ -87,7 +88,7 @@ const addUserAddressController = async (req,res) =>{
         const endereco = await userService.addUserAddressService(req.params.id, req.body);
 
         if(endereco.ok == 1){
-            res.status(201).send({ message: `Endereco adicionado com sucesso!`});
+            res.status(200).send({ message: `Endereco adicionado com sucesso!`});
         }else{
             res.status(400).send({ message: `Algo deu errado no endereço, tente novamente!`});
         }
@@ -98,14 +99,14 @@ const addUserAddressController = async (req,res) =>{
     }
 };
 
-const removeUserAddressController = async (req, res) => {
+const deleteUserAddressController = async (req,res) =>{
     try{
-        const endereco = await userService.removeUserAddressService(req.body.id, req.body.addressId);
+        const endereco = await userService.removerUserAddressService(req.body.id, req.body.addressId);
 
         if(endereco.ok == 1){
-            res.status(200).send({ message: `Endereco removido com sucesso!`});
+            res.status(200).send({ menssage: `Endereco removido com sucesso!`});
         }else{
-            res.status(400).send({ message: `Algo deu errado no endereço, não foi removido, tente novamente!`});
+            res.status(400).send({ menssage: `Algo deu errado no endereço, não foi removido, tente novamente!`});
         }
 
     }catch(err){
@@ -124,7 +125,7 @@ const addUserFavProductController = async (req,res) =>{
     }
 };
 
-const removeUserFavProductController = async (req,res) =>{
+const deleteUserFavProductController = async (req,res) =>{
     try{
         
 
@@ -139,9 +140,9 @@ module.exports = {
     findAllUsercontroller,
     createUserController,
     updateUserController,
-    removeUserController,
+    deleteUserController,
     addUserAddressController,
-    removeUserAddressController,
+    deleteUserAddressController,
     addUserFavProductController,
-    removeUserFavProductController,
+    deleteUserFavProductController,
 }

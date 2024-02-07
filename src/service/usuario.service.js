@@ -16,8 +16,8 @@ const updateUserService = (id, body) => {
     return Usuario.findByIdAndUpdate(id, body, {returnDocumente: "after"}); //para não retorna o mesmo documente do banco
 }
 
-const removeUserService = (id) => {
-    return Usuario.findByIdAndRemove(id);
+const deleteUserService = (id) => {
+    return Usuario.findByIdremove(id);
 }
 
 const addUserAddressService = (id, endereco) => {
@@ -36,7 +36,7 @@ const addUserAddressService = (id, endereco) => {
     );
 }
 
-const removeUserAddressService = (id, addressId) => {
+const deleteUserAddressService = (id, addressId) => {
     return Usuario.findOneAndUpdate(
         {
             _id: id,
@@ -58,7 +58,7 @@ const addUserFavProductService = (id, produto) => {
     
 }
 
-const removerUserFavProductService = (produto) => {
+const deleteUserFavProductService = (produto) => {
     
 }
 
@@ -67,9 +67,9 @@ module.exports = {
     findAllUsersService,
     createUsersService,
     updateUserService,
-    removeUserService,
+    deleteUserService,
     addUserAddressService,
-    removeUserAddressService,
+    deleteUserAddressService,
     addUserFavProductService,
-    removerUserFavProductService,
+    deleteUserFavProductService,
 }
