@@ -102,8 +102,15 @@ const addUserAddressController = async (req, res) =>{
 const deleteUserAddressController = async (req, res) => {
     try{
         const endereco = await userService.deleteUserAddressService(req.body.id, req.body.addressId);
+        let found = false;
 
-        if(endereco.ok == 1){
+        endereco.value.enderecos.map((valor, chave) => {
+            if(valor._id == req.body.addressId){
+                found = true;
+            }
+        })
+
+        if(found){
             res.status(200).send({ message: `Endereco removido com sucesso!`});
         }else{
             res.status(400).send({ message: `Algo deu errado no endereço, não foi removido, tente novamente!`});
