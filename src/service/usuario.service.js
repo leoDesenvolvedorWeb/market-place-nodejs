@@ -17,7 +17,7 @@ const updateUserService = (id, body) => {
 }
 
 const deleteUserService = (id) => {
-    return Usuario.findByIddelete(id);
+    return Usuario.findByIdAndDelete(id);
 }
 
 const addUserAddressService = (id, endereco) => {
