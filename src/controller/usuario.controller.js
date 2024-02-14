@@ -87,10 +87,10 @@ const addUserAddressController = async (req, res) =>{
         req.body.createdAt = new Date();
         const endereco = await userService.addUserAddressService(req.params.id, req.body);
 
-        if(endereco.ok == 1){
-            res.status(200).send({ message: `Endereco adicionado com sucesso!`});
+        if(endereco == null){
+            res.status(400).send({ message: `Algo deu errado no endereço, tente novamente`});
         }else{
-            res.status(400).send({ message: `Algo deu errado no endereço, tente novamente!`});
+            res.status(201).send({ message: `Endereço adicionado com sucesso!`});
         }
  
     }catch(err){
@@ -104,7 +104,7 @@ const deleteUserAddressController = async (req, res) => {
         const endereco = await userService.deleteUserAddressService(req.body.id, req.body.addressId);
         let found = false;
 
-        endereco.value.enderecos.map((valor, chave) => {
+        endereco.enderecos.map((valor, chave) => {
             if(valor._id == req.body.addressId){
                 found = true;
             }

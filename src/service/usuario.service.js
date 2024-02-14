@@ -13,7 +13,7 @@ const createUsersService = (body) => {
 }
 
 const updateUserService = (id, body) => {
-    return Usuario.findByIdAndUpdate(id, body, {returnDocumente: "after"}); //para não retorna o mesmo documente do banco
+    return Usuario.findByIdAndUpdate(id, body, {returnDocumente: "after"}); //para nÃ£o retorna o mesmo documente do banco
 }
 
 const deleteUserService = (id) => {
@@ -23,11 +23,11 @@ const deleteUserService = (id) => {
 const addUserAddressService = (id, endereco) => {
     return Usuario.findOneAndUpdate(
         {
-            _id: id,
+            "_id": id,
         },
         {
             $push:{
-                enderecos: endereco,
+                "enderecos": endereco,
             }
         },
         {
@@ -39,12 +39,12 @@ const addUserAddressService = (id, endereco) => {
 const deleteUserAddressService = (id, addressId) => {
     return Usuario.findOneAndUpdate(
         {
-            _id: id,
+            "_id": id,
         },
         {
-            $pul:{
-                enderecos: {
-                    _id: addressId
+            $pull:{
+                "enderecos": {
+                    "_id": addressId
                 },
             }
         },
