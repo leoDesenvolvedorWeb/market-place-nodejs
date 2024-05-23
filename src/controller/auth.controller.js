@@ -7,7 +7,7 @@ const loginController = async (req, res) => {
     const user = await authService.loginService(email);
 
     if(!user){
-        return res.status(400).send({ menssage: "Usuario não encontrado!"});
+        return res.status(400).send({ message: "Usuario não encontrado!"});
     }
 
     const isPasswordValid = await bcrypt.compare(senha, user.senha);
