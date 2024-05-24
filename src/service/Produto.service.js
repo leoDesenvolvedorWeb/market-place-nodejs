@@ -1,7 +1,7 @@
 const Produto = require("../model/Produto");
 
 const findProductByIdService = (id) => {
-    return Produto.finById(id);
+    return Produto.findById(id);
 }
 
 const findAllProductsService = () => {
@@ -9,15 +9,15 @@ const findAllProductsService = () => {
 }
 
 const createProductService = (body) => {
-    return Produto.fincreate(body);
+    return Produto.create(body);
 }
 
 const updateProductByIdService = (id, body) => {
-    return Produto.finByIdAndUpdate(id, body, { returnDocument: "after"});
+    return Produto.findByIdAndUpdate(id, body, { returnDocument: "after" });
 }
 
 const deleteProductByIdService = (id) => {
-    return Produto.finByIdAndRemove(id);
+    return Produto.findByIdAndRemove(id);
 }
 
 module.exports = {
