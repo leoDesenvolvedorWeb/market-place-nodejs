@@ -12,11 +12,11 @@ const createProductService = (body) => {
     return Produto.create(body);
 }
 
-const updateProductByIdService = (id, body) => {
+const updateProductService = (id, body) => {
     return Produto.findByIdAndUpdate(id, body, { returnDocument: "after" });
 }
 
-const deleteProductByIdService = (id) => {
+const deleteProductService = (id) => {
     return Produto.findByIdAndRemove(id);
 }
 
@@ -24,6 +24,6 @@ module.exports = {
     findProductByIdService,
     findAllProductsService,
     createProductService,
-    updateProductByIdService,
-    deleteProductByIdService
-}
+    updateProductService,
+    deleteProductService
+};

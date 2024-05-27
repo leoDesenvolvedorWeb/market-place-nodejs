@@ -25,6 +25,8 @@ const createProductController = async (req, res) => {
             userId: req.userId,
             CreatedAt: new Date(),
         }
+
+        res.send(await produtoService.createProductService(corpo));
     }catch{
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado, tente novamente!`});
@@ -33,7 +35,7 @@ const createProductController = async (req, res) => {
 
 const updateProductController = async (req, res) => {
     try{
-        res.send(await produtoService.updateProductService(req.params.id));
+        res.send(await produtoService.updateProductService(req.params.id, req.body));
     }catch{
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado, tente novamente!`});
@@ -42,7 +44,7 @@ const updateProductController = async (req, res) => {
 
 const deleteProductController = async (req, res) => {
     try{
-        res.send(await produtoService.createProductService(req.params.id));
+        res.send(await produtoService.deleteProductService(req.params.id));
     }catch{
         console.log(`erro: ${err.message}`);
         return res.status(500).send({ message: `Erro inesperado, tente novamente!`});
