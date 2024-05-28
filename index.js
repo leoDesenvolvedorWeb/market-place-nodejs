@@ -4,7 +4,7 @@ const connectToDatabase = require("./src/database/database"); //arquivos de cone
 
 const usuario  = require("./src/router/usuario.router"); //arquivo de rota do usuario
 const auth  = require("./src/router/auth.router"); //arquivo de rota de auth
-const produto  = require("./src/router/produto.router"); //arquivo de rota de produto
+const produto  = require("./src/router/Produto.router"); //arquivo de rota de produto
 
 const app = express();
 
