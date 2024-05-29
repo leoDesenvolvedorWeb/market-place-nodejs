@@ -42,14 +42,28 @@ const updateProductController = async (req, res) => {
     }
 }
 
-const deleteProductController = async (req, res) => {
-    try{
-        res.send(await produtoService.deleteProductService(req.params.id));
-    }catch{
-        console.log(`erro: ${err.message}`);
-        return res.status(500).send({ message: `Erro inesperado, tente novamente!`});
+async function deleteProductController(req, res) {
+    try {
+        // Seu código para deletar o produto
+        const result = await Produto.deleteOne({ _id: req.params.id });
+        if (result.deletedCount === 0) {
+            return res.status(404).send({ message: 'Produto não encontrado' });
+        }
+        res.status(200).send({ message: 'Produto deletado com sucesso' });
+    } catch (err) {
+        console.log("erro: " + err.message);
+        res.status(500).send({ message: 'Erro ao deletar produto' });
     }
 }
+
+// const deleteProductController = async (req, res) => {
+//     try{
+//         res.send(await produtoService.deleteProductService(req.params.id));
+//     }catch{
+//         console.log(`erro: ${err.message}`);
+//         return res.status(500).send({ message: `Erro inesperado, tente novamente!`});
+//     }
+// }
 
 module.exports = {
     findProductByIdController,

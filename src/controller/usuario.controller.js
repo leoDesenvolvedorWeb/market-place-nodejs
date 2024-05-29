@@ -71,7 +71,7 @@ const deleteUserController = async (req, res) => {
 
 
         if(deletedUser == null){
-            res.status(404).send({ menssage: `Usuario nao encontrado, tente novamente!`});
+            res.status(404).send({ message: `Usuario nao encontrado, tente novamente!`});
         }else{
             res.status(200).send({ message: `Sucesso, usuario deletado!`});
         }
@@ -137,7 +137,7 @@ const deleteUserFavProductController = async (req,res) =>{
         
 
     }catch(err){
-        console.log(`erro: ${err.message}`);
+        console.log(`erro: ${ err.message}`);
         return res.status(500).send("erro no servidor, tente novamente mais tarde");
     }
 };
