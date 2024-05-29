@@ -44,7 +44,7 @@ const updateProductController = async (req, res) => {
 
 async function deleteProductController(req, res) {
     try {
-        // Seu código para deletar o produto
+        res.send(await produtoService.deleteProductService(req.params.id));
         const result = await Produto.deleteOne({ _id: req.params.id });
         if (result.deletedCount === 0) {
             return res.status(404).send({ message: 'Produto não encontrado' });
