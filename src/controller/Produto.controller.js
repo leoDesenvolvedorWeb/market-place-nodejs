@@ -56,9 +56,30 @@ async function deleteProductController(req, res) {
     }
 }
 
-// const deleteProductController = async (req, res) => {
+const deleteProductController = async (req, res) => {
+    try{
+        res.send(await produtoService.deleteProductService(req.params.id));
+    }catch{
+        console.log(`erro: ${err.message}`);
+        return res.status(500).send({ message: `Erro inesperado, tente novamente!`});
+    }
+};
+
+// const addCategoriaProdutoController = async (req, res) = async (req, res) => {
 //     try{
-//         res.send(await produtoService.deleteProductService(req.params.id));
+//         req.body.createAt = new Date();
+//         const categoria = await produtoService.addCategoriaProdutoService(req.params.id, req.body);
+
+//     }catch{
+//         console.log(`erro: ${err.message}`);
+//         return res.status(500).send({ message: `Erro inesperado, tente novamente!`});
+//     }
+// }
+
+// const RemoveCategoriaProdutoController = async (req, res) = async (req, res) => {
+//     try{
+//         const categoria = await produtoService.removeCategoriaProdutoService(req.body);
+
 //     }catch{
 //         console.log(`erro: ${err.message}`);
 //         return res.status(500).send({ message: `Erro inesperado, tente novamente!`});
