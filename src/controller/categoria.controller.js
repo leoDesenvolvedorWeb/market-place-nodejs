@@ -9,7 +9,7 @@ const findCategoriaByIdController = async (req, res) => {
     }
 };
 
-const findAllCategoriaService = async (req, res) => {
+const findAllCategoriaController = async (req, res) => {
     try{
         res.status(200).send(await categoriaService.findAllCategoriaService());
     }catch(err){
@@ -18,7 +18,7 @@ const findAllCategoriaService = async (req, res) => {
     }
 };
 
-const createCategoriaService = async (req, res) => {
+const createCategoriaController = async (req, res) => {
     try{
         const corpo = {
             ...req.body,
@@ -31,7 +31,7 @@ const createCategoriaService = async (req, res) => {
     }
 };
 
-const updateCategoriaService = async (req, res) => {
+const updateCategoriaController = async (req, res) => {
     try{
         res.status(200).send(await categoriaService.updateCategoriaService(req.params.id, req.body));
     }catch(err){
@@ -40,7 +40,7 @@ const updateCategoriaService = async (req, res) => {
     }
 };
 
-const deleteCategoriaService = async (req, res) => {
+const deleteCategoriaController = async (req, res) => {
     try{
         res.status(200).send(await categoriaService.deleteCategoriaService(req.params.id));
     }catch(err){
@@ -51,8 +51,8 @@ const deleteCategoriaService = async (req, res) => {
 
 module.exports = {
     findCategoriaByIdController,
-    findAllCategoriaService,
-    createCategoriaService,
-    updateCategoriaService,
-    deleteCategoriaService
+    findAllCategoriaController,
+    createCategoriaController,
+    updateCategoriaController,
+    deleteCategoriaController
 };
