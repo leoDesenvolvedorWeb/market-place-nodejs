@@ -30,7 +30,7 @@ const createCarrinhoService = async (req, res) => {
             userId: req.userId
         }
         
-        res.status(200).send(await CarrinhoService.createCarrinhoService(req.params.id, corpo));
+        res.status(201).send(await CarrinhoService.createCarrinhoService(corpo));
     }catch(err){
         res.status(500).send({ message: "Erro inesperado, tente novamente!"});
         console.log(err.message);
