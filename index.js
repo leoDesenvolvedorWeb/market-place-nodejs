@@ -6,7 +6,7 @@ const usuario  = require("./src/router/usuario.router"); //arquivo de rota do us
 const auth  = require("./src/router/auth.router"); //arquivo de rota de auth
 const produto  = require("./src/router/Produto.router"); //arquivo de rota de produto
 const categoria  = require("./src/router/categoria.router"); //arquivo de rota de categoria
-const carrinho  = require("./src/router/categoria.router"); //arquivo de rota de carrinho
+const carrinho  = require("./src/router/carrinho.router"); //arquivo de rota de carrinho
 
 const app = express();
 

@@ -45,8 +45,8 @@ const removeCategoriaProdutoService = (id, categoria) => {
             _id: id,
         },
         {
-            $pull: {
-                categoria: {
+            $pull: {categoria: 
+                {
                     _id: categoria._id,
                 },
             },

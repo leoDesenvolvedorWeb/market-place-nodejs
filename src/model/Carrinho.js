@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const CarrinhoShema = new mongoose.Schema({
+const CarrinhoSchema = new mongoose.Schema({
     produtos: [
         {
           _id: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "produtos" },
